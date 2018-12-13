@@ -1,6 +1,7 @@
-<?php
-defined('BASEPATH') OR exit('No direct script access allowed');
-?><!DOCTYPE html>
+  <?php
+  defined('BASEPATH') OR exit('No direct script access allowed');
+  if(count(get_included_files()) ==1) exit("Direct access not permitted.");
+  ?><!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -11,25 +12,25 @@ defined('BASEPATH') OR exit('No direct script access allowed');
   <meta name="author" content="">
   <title>Sistem Informasi Perpustakaan</title>
   <!-- Bootstrap core CSS-->
-  <link href="<?php echo base_url()."assets/"; ?>vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-  <!-- Custom fonts for this template-->
-  <link href="<?php echo base_url()."assets/"; ?>vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-  <!-- Page level plugin CSS-->
-  <link href="<?php echo base_url()."assets/"; ?>vendor/datatables/dataTables.bootstrap4.css" rel="stylesheet">
+ <link href="<?php echo base_url()."assets/"; ?>vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Custom fonts for this template-->
+    <link href="<?php echo base_url()."assets/"; ?>vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <!-- Page level plugin CSS-->
+    <link href="<?php echo base_url()."assets/"; ?>vendor/datatables/dataTables.bootstrap4.css" rel="stylesheet">
   <!-- Custom styles for this template-->
-  <link href="<?php echo base_url()."assets/"; ?>css/sb-admin.css" rel="stylesheet">
+
 </head>
 
-<body id="page-top">
+<body class="fixed-nav sticky-footer bg-dark" id="page-top">
   <!-- Navigation-->
-   <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="mainNav">
-    <a class="navbar-brand" href="<?php echo base_url('welcome/adminpage'); ?>">Sistem Informasi Perpustakaan</a>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="mainNav">
+    <a class="navbar-brand" href="#">Sistem Informasi Perpustakaan</a>
     <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarResponsive">
       <ul class="navbar-nav ml-auto">
-
         <li class="nav-item">
           <form class="form-inline my-2 my-lg-0 mr-lg-2" action="<?php echo base_url('index.php/welcome/hasil')?>" action="GET">
             <div class="input-group">
@@ -43,25 +44,25 @@ defined('BASEPATH') OR exit('No direct script access allowed');
           </form>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="<?php echo base_url('welcome/logout'); ?>>
+          <a class="nav-link" href="<?php echo base_url('welcome/logout'); ?>"">
             <i class="fa fa-fw fa-sign-out"></i>Logout</a>
         </li>
       </ul>
     </div>
   </nav>
-  <div>
+  <div class="content-wrapper">
     <div class="container-fluid">
-        <!-- Breadcrumbs-->
-        <ol class="breadcrumb">
-          <li class="breadcrumb-item">
-            <a href="<?php echo base_url()."assets/"; ?>#">Dashboard</a>
-          </li>
-          <li class="breadcrumb-item active">Tables</li>
-        </ol>
-        <!-- Example DataTables Card-->
-        <div class="card mb-3">
+      <!-- Breadcrumbs-->
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+          <a href="#">Dashboard</a>
+        </li>
+        <li class="breadcrumb-item active">Tables</li>
+      </ol>
+      <!-- Example DataTables Card-->
+      <div class="card mb-3">
         <div class="card-header">
-          <a class="nav-link" href="<?php echo base_url('welcome/tambah'); ?>" style="color: Black"><img style="width: 20px" src="<?php echo base_url()."assets/img/add.png";?>"> Tambah Buku</a></div>
+          <i class="fa fa-table"></i> Data Table Example</div>
         <div class="card-body">
           <div class="table-responsive">
             <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
@@ -76,7 +77,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     <th>Hapus</th>
                 </tr>
               </thead>
-              <?php foreach ($cari as $row) {?>
+              <?php foreach ($data_buku as $row) {?>
           <tr>
             <td><?php echo $row->judul;?></td>
             <td><?php echo $row->pengarang;?></td>
@@ -107,11 +108,40 @@ defined('BASEPATH') OR exit('No direct script access allowed');
       </div>
     </footer>
     <!-- Scroll to Top Button-->
-    <a class="scroll-to-top rounded" href="<?php echo base_url()."assets/"; ?>#page-top">
+    <a class="scroll-to-top rounded" href="#page-top">
       <i class="fa fa-angle-up"></i>
     </a>
     <!-- Logout Modal-->
-    
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+            <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">×</span>
+            </button>
+          </div>
+          <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+          <div class="modal-footer">
+            <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+            <a class="btn btn-primary" href="login.html">Logout</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Bootstrap core JavaScript-->
+   <script src="vendor/jquery/jquery.min.js"></script>
+      <script src="<?php echo base_url()?>vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+      <!-- Core plugin JavaScript-->
+      <script src="<?php echo base_url()?>vendor/jquery-easing/jquery.easing.min.js"></script>
+      <!-- Page level plugin JavaScript-->
+      <script src="<?php echo base_url()?>vendor/datatables/jquery.dataTables.js"></script>
+      <script src="<?php echo base_url()?>vendor/datatables/dataTables.bootstrap4.js"></script>
+      <!-- Custom scripts for all pages-->
+      <script src="<?php echo base_url()?>js/sb-admin.min.js"></script>
+      <!-- Custom scripts for this page-->
+      <script src="<?php echo base_url()?>js/sb-admin-datatables.min.js"></script>
+    </div>
   </div>
 </body>
 

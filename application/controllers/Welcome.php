@@ -154,7 +154,7 @@ class Welcome extends CI_Controller {
 		$this->cek_login();
 		$data['data_buku']= $this->get_data_buku()->result();
 		//$this->db_perpus->insert_into_database()salah
-		$data['data_buku']= $this->get_data_buku()->result();
+		
 		//$this->load->view('view_buku',$data);salah
 		$this->load->view('welcome_message',$data);
 		}
